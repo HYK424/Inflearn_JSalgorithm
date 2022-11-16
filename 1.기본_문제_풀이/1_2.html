@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            // 삼각형 가능 여부 구하기. 가장 긴 변의 길이는 다른 두 변의 합보다 작을 것
+            function solution(a, b, c){
+                let answer="YES"; let max;
+                let ba=[a,b,c];
+                if(a>b) max=a;
+                    else max=b;
+                if(max<c) max=c;
+                
+             let or=ba.map((a)=>{
+                if(a==max){
+                    return 0;
+                }
+                else{
+                    return a;
+                }
+             });
+
+             let sum=or.reduce((a,b)=>{
+                    return a+=b;
+             },0)
+
+             if(sum<max){
+                answer="no";
+             }
+                return answer;
+            }
+
+            console.log(solution(7, 6, 11));
+        </script>
+    </body>
+</html>

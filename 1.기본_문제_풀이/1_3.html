@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(n){
+                let answer;
+               answer=Math.ceil((n/12));
+               //소수 몇번째 자릿수까지 출력할건지 하려면 Math.ceil()안에서 10^n만큼 곱하고
+               //외부에서 그만큼 또 곱해주면 된다.
+               
+                return answer;
+            }
+
+            console.log(solution(25));
+        </script>
+    </body>
+</html>

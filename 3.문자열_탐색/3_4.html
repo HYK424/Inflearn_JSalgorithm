@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(s, t){
+                const len=s.length;
+                const answer=[];
+                let cc=0, cc2=0;
+                for(let i=0; i<len; i++){
+
+                    for(let j=i; 0<=j; j--){
+                        if(s[j]==t){
+                            break;
+                        }
+                        cc++;
+                    }
+                    for(let j=i; j<len; j++){
+                        if(s[j]==t){
+                            break;
+                        }
+                        cc2++;
+                    }
+                    if(cc>cc2){answer.push(cc2);}
+                    else if(cc<cc2){answer.push(cc);}
+                    else {answer.push(cc);}
+                    cc=0;
+                    cc2=0;
+                }
+                return answer;
+            }
+            
+            let str="teachermode";
+            console.log(solution(str, 'e'));
+        </script>
+    </body>
+</html>

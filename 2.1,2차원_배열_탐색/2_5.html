@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>//입력된 순서대로 등수를 표기한다(내림차순으로 가장 높은 점수가 1등)
+        //같은 점수가 동일 입력된 경우 높은 등수를 기준으로 동일 처리
+        //100점이 3명 존재하면 1등은 3명이고 그 다음은 4등이 된다.
+            function solution(arr){  
+                let n=arr.length;
+                let answer=[];
+                for(let i=0; i<arr.length; i++){
+                    n=arr.length
+                    for(let j=0; j<arr.length; j++){
+                        if(i!=j){
+                        if(arr[i]>=arr[j]){
+                            n--; 
+                        }
+                        }
+                    }
+                    answer.push(n);
+                }
+                return answer;
+            }
+            let arr=[92, 92, 92, 100, 76];
+            console.log(solution(arr));
+        </script>
+    </body>
+</html>
+
+<!-- <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(arr){  
+                let n=arr.length;
+                let answer=Array.from({length:n}, ()=>1); 요소가 모두 1인 배열을 미리 선언
+                for(let i=0; i<n; i++){
+                    for(let j=0; j<n; j++){
+                        if(arr[j]>arr[i]) answer[i]++;
+                    }
+                }             
+                return answer;
+            }
+
+            let arr=[87, 89, 92, 100, 76];
+            console.log(solution(arr));
+        </script>
+    </body>
+</html> -->

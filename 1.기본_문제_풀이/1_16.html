@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>//소문자로 문자열이 입력되면 중복 문자 제거하고 출력
+            function solution(s){  
+                let answer="";
+                let set=new Set(s);
+                for(let a of set){
+                    answer+=a;
+                }
+                return answer;
+            }
+            console.log(solution("ksekkset"));
+        </script>
+    </body>
+</html>

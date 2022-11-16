@@ -1,0 +1,72 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>//앞에서 읽나 뒤에서 읽나 같은 문자열을 회문 문자열이라 한다. 
+        //이 경우 대소문자를 구분하지않으며 회문 문자열이면 YES, 아니면 NO를 출력한다.
+            function solution(s){
+                let answer="YES";
+                let sl=s.toLowerCase();
+                let slen=s.length-1;
+                //반복문에서 s.length/2을 Math.flooer로 묶어 줬으면 더 깔끔했을 듯
+                for(let i=0; i<s.length/2; i++){
+                    if(sl[i]!==sl[slen]){
+                        answer="NO";
+                        break;
+                    }
+                    slen--;
+                }
+               return answer;
+            }
+            
+            let str="goooG";
+            console.log(solution(str));
+        </script>
+    </body>
+</html>
+
+<!-- <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(s){
+                let answer="YES";
+                s=s.toLowerCase();
+                let len=s.length;
+                for(let i=0; i<Math.floor(len/2); i++){
+                    if(s[i]!=s[len-i-1]) return "NO";
+                }
+                return answer;
+            }
+            
+            let str="goooG";
+            console.log(solution(str));
+        </script>
+    </body>
+</html>
+
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(s){
+                let answer="YES";
+                s=s.toLowerCase();
+                if(s.split('').reverse().join('')!=s) return "NO";    
+                return answer;
+            }
+            
+            let str="gooG";
+            console.log(solution(str));
+        </script>
+    </body>
+</html> -->

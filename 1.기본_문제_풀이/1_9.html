@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>//대문자로 이루어진 단어가 입력되면 모든 'A'는 '#'으로 바꿔 출력
+            function solution(s){
+                let answer="";
+            
+            for(let i of s){
+                if(i=="A" ) answer+="#";
+                else answer+=i;
+            }
+        
+                return answer;
+            }
+            
+            let str="BANANA";
+            console.log(solution(str));
+        </script>
+    </body>
+</html>
+
