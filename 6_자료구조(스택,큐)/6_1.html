@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      //         괄호가 입력되면 올바른 괄호이면 “YES", 올바르지 않으면 ”NO"를 출력합니다.
+      // (())() 이것은 괄호의 쌍이 올바르게 위치하는 거지만, (()()))은 올바른 괄호가 아니다.
+      // 본 섹션의 의도는 스택을 사용하여 푸는 것이다. 밑의 방법도 가능하지만 섹션의 의도와는 맞지 않다.
+      function solution(s) {
+        let answer = 'YES';
+        let cnt = 0;
+        for (let key of s) {
+          if (key === '(') cnt++;
+          else {
+            cnt--;
+            if (cnt < 0) return 'NO'; //'))((' 같은 상황을 막기 위함이다.
+          }
+        }
+        if (cnt !== 0) return 'NO'; //cnt === 0 일 경우에만 "YES"
+        return answer;
+      }
+
+      let a = '(()(()))(()';
+      console.log(solution(a));
+    </script>
+  </body>
+</html>
+
+<!-- <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(s){
+                let answer="YES";
+                stack=[];
+                for(let x of s){
+                    if(x==='(') stack.push(x);
+                    else{
+                        if(stack.length===0) return "NO";
+                        stack.pop();
+                    }
+                }
+                if(stack.length>0) return "NO";  
+                return answer;
+            }
+            
+            let a="(()(()))(()";
+            console.log(solution(a));
+        </script>
+    </body>
+</html> -->
