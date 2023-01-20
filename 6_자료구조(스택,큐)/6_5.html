@@ -1,0 +1,72 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+//         쇠막대기와 레이저의 배치를 나타내는 괄호 표현이 주어졌을 때, 잘려진 쇠막대기 조각의 총 
+// 개수를 구하는 프로그램을 작성하시오
+// • 쇠막대기는 자신보다 긴 쇠막대기 위에만 놓일 수 있다. - 쇠막대기를 다른 쇠막대기 위에 
+// 놓는 경우 완전히 포함되도록 놓되, 끝점은 겹치지 않도록 놓는다.
+// • 각 쇠막대기를 자르는 레이저는 적어도 하나 존재한다.
+// • 레이저는 어떤 쇠막대기의 양 끝점과도 겹치지 않는다.
+//         1. 한 줄에 쇠막대기와 레이저의 배치를 나타내는 괄호 표현이 공백없이 주어진다.
+//         2. 레이저는 여는 괄호와 닫는 괄호의 인접한 쌍 ‘( ) ’ 으로 표현된다. 또한, 모든 ‘( ) ’는 반 
+//  드시 레이저를 표현한다.
+//  3. 쇠막대기의 왼쪽 끝은 여는 괄호 ‘ ( ’ 로, 오른쪽 끝은 닫힌 괄호 ‘) ’ 로 표현된다.
+
+        let answer = 0;
+        let stack = [];
+        for (let x = 0; x < s.length; x++) {
+          if (s[x] === ')') {
+            stack.pop();
+            if (s[x - 1] === ')') {
+              //직전 원소를 '('면 레이저로 간주. 스택에 남아있는 길이만큼 answer에 더한다
+              //직전 원소가 ')'면 닫는 나무 막대로 간주. 막대를 닫고 1을 answer에 더한다
+              answer += 1;
+            } else {
+              answer += stack.length;
+            }
+          } else {
+            stack.push(s[x]);
+          }
+        }
+
+        return answer;
+      }
+
+      let a = '()(((()())(())()))(())';
+      console.log(solution(a));
+    </script>
+  </body>
+</html>
+
+<!-- <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(s){
+                let answer=0;
+                let stack=[];
+                for(let i=0; i<s.length; i++){
+                    if(s[i]==='(') stack.push('(');
+                    else{
+                        stack.pop(); 
+                        if(s[i-1]==='(') answer+=stack.length;
+                        else answer++;
+                        stack.pop(); 이 위치에 하면 레이저까지 카운팅한다.
+                    }
+                }                          
+                return answer;
+            }
+            
+            let a="()(((()())(())()))(())";
+            console.log(solution(a));
+        </script>
+    </body>
+</html> -->
