@@ -17,17 +17,22 @@
       // N과 K가 주어질 때 공주를 구하러 갈 왕자의 번호를 출력하는 프로그램을 작성하시오
       function solution(n, k) {
         let answer;
-        let cnt = 0;
+        let cnt = 1;
         let arr = [];
         for (let i = 1; i <= n; i++) {
           arr.push(i);
         }
-        while (arr.length) {
-          for (let i = 1; i < k; i++) {
-            arr.push(arr.shift());
+        while (1) {
+          arr.push(arr.shift());
+          cnt++;
+          if (cnt === k) {
+            arr.shift();
+            cnt = 1;
           }
-          arr.shift();
-          if (arr.length == 1) answer = arr.shift();
+          if (arr.length === 1) {
+            answer = arr.shift();
+            break;
+          }
         }
 
         return answer;
