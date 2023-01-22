@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      //대문자로 이루어진 A,B,C,D 의 과목들이 있고 여기서 필수과목 C,B,A가 주어지면 수강하는 과목 목록은 CBA순으로 짜여 있어야 한다
+      // C,B,D,A 면 'YES' 고, 필수과목 순서대로 짜여져 있지 않은 C,A,B,D 면 'NO' 가 출력되게 하라.
+      function solution(need, plan) {
+        let answer = 'YES';
+        let queue = [];
+        let index = 0;
+        for (let x of plan) {
+          if (x === need[index]) {
+            queue.push(x);
+            index++;
+          }
+        }
+        if (queue.length !== need.length) answer = 'NO';
+        return answer;
+      }
+
+      let a = 'CBA';
+      let b = 'CBDAGE';
+      console.log(solution(a, b));
+    </script>
+  </body>
+</html>
+
+<!-- <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(need, plan){
+                let answer="YES";
+                let queue=need.split('');
+                for(let x of plan){
+                    if(queue.includes(x)){
+                        if(x!==queue.shift()) return "NO";
+                    }
+                }
+                if(queue.length>0) return "NO";  
+                return answer;
+            }
+
+            let a="CBA";
+            let b="CBDAGE";
+            console.log(solution(a, b));
+        </script>
+    </body>
+</html> -->
