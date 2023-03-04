@@ -1,0 +1,87 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      //오름차순인 songs 배열을 index순서대로 담을 때, 조건을 얼마로 정해야 m개 이하로 쪼개서 담을 수 있을까.
+      //최소 조건의 수 m을 구하여라. ex) songs=[1,2,3,4,5,6,7] 일 때 조건이 10이하면 (1,2,3,4),(5),(6),(7) = 4개가 담긴다.
+      function count(mid, songs) {
+        let num = 0;
+        let count = 1;
+        for (let val of songs) {
+          num += val;
+          if (num > mid) {
+            count++;
+            num = val;
+          }
+        }
+
+        return count;
+      }
+
+      function solution(m, songs) {
+        let lt = songs[songs.length - 1], //lt는 오름차순에서 가장 큰 값. 오름차순이 보장되지 않는다면 Math.max(...songs)를 사용
+          rt = Number.MAX_SAFE_INTEGER; //rt는 어차피 한 번 사이클 돌 때 바뀔 것이므로 임의의 큰 값으로 설정
+        answer = 0;
+        while (lt <= rt) {
+          let mid = Math.floor((lt + rt) / 2);
+
+          if (count(mid, songs) <= m) {
+            answer = mid;
+            rt = mid - 1; //주어진 조건을 만족하면 rt를 mid-1로 설정한다. mid를 더 낮은 값으로 바꿔 최적화된 값을 찾아내기 위해
+          } else {
+            lt = mid + 1; //만족하지 못한다면 lt의 값을 증가하여 mid를 높은 값으로 바꾼다.
+          }
+        }
+        return answer;
+      }
+
+      let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+      console.log(solution(3, arr));
+    </script>
+  </body>
+</html>
+
+<!-- <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function count(songs, capacity){
+                let cnt=1, sum=0;
+                for(let x of songs){
+                    if(sum+x > capacity){
+                        cnt++;
+                        sum=x;
+                    }
+                    else sum+=x;
+                }
+                return cnt;
+            }
+            
+            function solution(m, songs){
+                let answer;
+                let lt=Math.max(...songs);
+                let rt=songs.reduce((a, b)=>a+b, 0);
+                while(lt<=rt){
+                    let mid=parseInt((lt+rt)/2);
+                    if(count(songs, mid)<=m){
+                        answer=mid;
+                        rt=mid-1;
+                    }
+                    else{
+                        lt=mid+1;
+                    }
+                } 
+                return answer;
+            }
+
+            let arr=[1, 2, 3, 4, 5, 6, 7, 8, 9];
+            console.log(solution(3, arr));
+        </script>
+    </body>
+</html> -->
