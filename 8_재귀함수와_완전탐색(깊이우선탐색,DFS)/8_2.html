@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      //들어오는 10진수 값에 대해 2진수로 바꿔서 출력하라. 재귀함수로 구현할 것
+      function solution(n) {
+        let answer = [];
+        function DFS(n) {
+          if (parseInt(n / 2) === 1) {
+            answer.push(n / 2);
+            answer.push(n % 2);
+            return;
+          } else {
+            DFS(parseInt(n / 2));
+            answer.push(n % 2);
+          }
+        }
+        DFS(n);
+        return answer;
+      }
+
+      console.log(solution(11));
+    </script>
+  </body>
+</html>
+
+<!-- <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(n){
+                let answer="";
+                function DFS(n){
+                     if(n===0) return;
+                     else{
+                         DFS(parseInt(n/2));
+                         answer+=String(n%2);
+                     }
+                }
+                DFS(n);
+                return answer;
+            }
+
+            console.log(solution(11));
+        </script>
+    </body>
+</html> -->
