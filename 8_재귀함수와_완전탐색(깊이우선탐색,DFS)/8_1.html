@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      //자연수 N이 입력되면 재귀함수를 이용하여 1부터 N까지를 출력하는 프로그램을 작성
+      function solution(n) {
+        function DFS(L) {
+          if (L === 0) return;
+          else {
+            DFS(L - 1); //console이 실행되기 전에 DFS(L-1)이 먼저 호출
+            console.log(L); //console.log는 스택에 쌓여있다.
+          }
+        }
+        DFS(n);
+      }
+
+      solution(3);
+    </script>
+  </body>
+</html>
+
+<!-- <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(n){
+                function DFS(L){
+                    if(L==0) return;
+                    else{
+                        DFS(L-1);
+                        console.log(L);   
+                    }
+                }
+                DFS(n);
+            }
+
+            solution(3);
+        </script>
+    </body>
+</html> -->
