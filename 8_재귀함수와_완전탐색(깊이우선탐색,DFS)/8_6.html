@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      //주어진 무게를 넘지 않는 한에서 가장 무거운 무게를 DFS로 구하라
+      function solution(c, arr) {
+        let answer = 0;
+        let n = arr.length;
+        function DFS(L, sum) {
+          if (sum > c) return; //sum이 미리 제한 무게보다 클 때 return
+          if (L === n) {
+            //모든 배열 요소를 넣었을 때 -탐색이 끝났을 때
+            if (sum >= answer) answer = sum;
+          } else {
+            DFS(L + 1, sum + arr[L]);
+            DFS(L + 1, sum);
+          }
+        }
+        DFS(0, 0);
+        return answer;
+      }
+
+      let arr = [81, 58, 42, 33, 61];
+      console.log(solution(259, arr));
+    </script>
+  </body>
+</html>
+
+<!-- <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(c, arr){
+                let answer=Number.MIN_SAFE_INTEGER;
+                let n=arr.length;
+                function DFS(L, sum){
+                    if(sum>c) return;
+                    if(L===n){
+                        answer=Math.max(answer, sum);
+                    }
+                    else{
+                        DFS(L+1, sum+arr[L]);
+                        DFS(L+1, sum);
+                    }                  
+                }
+                DFS(0, 0);
+                return answer;
+            }
+
+            let arr=[81, 58, 42, 33, 61];
+            console.log(solution(259, arr));
+        </script>
+    </body>
+</html> -->
