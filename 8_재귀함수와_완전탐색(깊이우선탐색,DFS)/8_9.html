@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(m, arr) {
+        let answer = Number.MAX_SAFE_INTEGER;
+        let n = arr.length;
+        function DFS(L, sum) {
+          if (L >= answer) return; //answer로 최솟값 구하는 조건이 반복되는 것을 방지
+          if (sum > m) return; //sum이 조건합 보다 낮으나 이후 들어오는 숫자로 조건을 초과되면 계산을 다시 진행
+          if (sum === m) {
+            answer = Math.min(answer, L); //조건을 만족시켰을 때 몇 개의 동전으로 최소값 나올 지 비교
+          } else {
+            for (let i = 0; i < n; i++) {
+              DFS(L + 1, sum + arr[i]); //DFS로 합계 누적시키기.
+            }
+          }
+        }
+        DFS(0, 0);
+        return answer;
+      }
+
+      let arr = [1, 2, 5];
+      console.log(solution(15, arr));
+    </script>
+  </body>
+</html>
