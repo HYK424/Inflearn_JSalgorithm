@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      //미로 탐색(DFS)
+      function solution(board) {
+        let answer = 0;
+        //상하좌우 방향 좌표를 위해 배열 정의
+        let dx = [-1, 0, 1, 0];
+        let dy = [0, 1, 0, -1];
+        function DFS(x, y) {
+          if (dx === 6 && y === 6) answer++; //최종 도착지의 좌표는 (6,6) 이므로
+          else {
+            //이동 후 현재 위치를 위한 좌표 생성
+            let nx = x + dx[k];
+            let ny = y + dy[k];
+            if (
+              nx >= 0 && //현재 위치가 0미만이면 그래프를 벗어난 것이다
+              nx <= 6 && //현재 위치가 6초과면 도착 좌표를 벗어난 것이다
+              ny >= 0 &&
+              ny <= 6 &&
+              board[nx][ny] === 0 //0은 아직 가보지 않은 좌표 의미
+            ) {
+              board[nx][ny] = 1; //지나온 좌표는 1로 체크
+              DFS(nx, ny);
+              board[nx][ny] = 0; //모든 경로 탐색 후 지나왔던 좌표를 0으로 돌린 후 다시 방향 탐색
+            }
+          }
+        }
+        board[0][0] = 1;
+        DFS(0, 0);
+        return answer;
+      }
+
+      let arr = [
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 1, 1, 1, 1, 1, 0],
+        [0, 0, 0, 1, 0, 0, 0],
+        [1, 1, 0, 1, 0, 1, 1],
+        [1, 1, 0, 0, 0, 0, 1],
+        [1, 1, 0, 1, 1, 0, 0],
+        [1, 0, 0, 0, 0, 0, 0],
+      ];
+
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
