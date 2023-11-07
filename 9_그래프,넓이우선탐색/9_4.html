@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      //이진트리 넓이우선탐색(BFS)
+      function solution() {
+        let answer = '';
+        let queue = [];
+        queue.push(1); //큐에 미리 1을 넣어준다.
+        while (queue.length) {
+          let v = queue.shift();
+          answer += v + ' ';
+          for (let nv of [v * 2, v * 2 + 1]) {
+            //이진트리에서 자식 노드는 부모(v)의 v*2, v*2+1 임을 이용
+            if (nv > 7) continue;
+            queue.push(nv);
+          }
+        }
+        return answer;
+      }
+
+      console.log(solution());
+    </script>
+  </body>
+</html>
