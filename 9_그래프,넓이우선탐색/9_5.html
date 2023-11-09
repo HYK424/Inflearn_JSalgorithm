@@ -1,0 +1,71 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s, e) {
+        let answer = 0;
+        let distance = Array(1001).fill(0); //추출한 값에 해당 하는 거리 저장하는 배열 생성
+        let check = Array(1001).fill(0); //한 번 거리에 넣은 값은 중복 확인을 방지하기 위해 체크용 배열 생성
+        let queue = [];
+        queue.push(s);
+        distance[s] = 0; //루트값의 거리는 0
+        check[s] = 1; //루트값 체크
+        while (queue.length) {
+          let x = queue.shift();
+          for (let nx of [x - 1, x + 1, x + 5]) {
+            if (nx === e) return distance[x] + 1; //추출한 값과 찾아야 하는 값이 같으면 루트 ~ 부모 값까지의 거리+1(해당 값의 거리)
+            if (nx > 0 && nx <= 10000 && check[nx] === 0) {
+              //범위에 충족 + 체크되어 있지 않은 값
+              check[nx] = 1; //체크
+              queue.push(nx);
+              distance[nx] = distance[x] + 1; //해당 값의 거리는 (부모 거리+1)
+            }
+          }
+        }
+
+        return answer;
+      }
+
+      console.log(solution(8, 3));
+    </script>
+  </body>
+</html>
+
+<!-- <html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s, e) {
+        let answer = 0;
+        let ch = Array.from({ length: 10001 }, () => 0);
+        let queue = [];
+        queue.push(s);
+        ch[s] = 1;
+        let L = 0;
+        while (queue.length) {
+          let len = queue.length;
+          for (let i = 0; i < len; i++) {
+            let x = queue.shift();
+            for (let nx of [x - 1, x + 1, x + 5]) {
+              if (nx === e) return L + 1;
+              if (nx > 0 && nx <= 10000 && ch[nx] === 0) {
+                ch[nx] = 1;
+                queue.push(nx);
+              }
+            }
+          }
+          L++;
+        }
+        return answer;
+      }
+
+      console.log(solution(5, 14));
+    </script>
+  </body>
+</html> -->
